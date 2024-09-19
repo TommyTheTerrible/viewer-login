@@ -25,8 +25,8 @@ export async function loadTexture(
 
 export async function loadTextures(texturesData: TextureData[]) {
    return Promise.all(
-      texturesData.map(({ path, width = 2048, height = 1024, options }) =>
-         loadTexture(`/realtime-planet-shader/${path}`, width, height, options)
+      texturesData.map(({ path, width = 5400, height = 2700, options }) =>
+         loadTexture(`/${path}`, width, height, options)
       )
    );
 }

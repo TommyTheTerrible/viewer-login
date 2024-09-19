@@ -47,7 +47,7 @@ in vec3 uSunDirection;
 //==========================================================//
 
 // Planet geometry
-#define ROTATION_SPEED .1
+#define ROTATION_SPEED .01
 #define PLANET_ROTATION rotateY(uTime * ROTATION_SPEED + uRotationOffset)
 
 // Planet colors
@@ -59,7 +59,7 @@ in vec3 uSunDirection;
 
 // Ray tracing
 #define INFINITY 1e10
-#define CAMERA_POSITION vec3(0., 0., 6.0)
+#define CAMERA_POSITION vec3(1.1, 1.0, 2.25)
 #define FOCAL_LENGTH CAMERA_POSITION.z / (CAMERA_POSITION.z - uPlanetPosition.z)
 
 #define PI acos(-1.)

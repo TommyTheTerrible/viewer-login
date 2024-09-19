@@ -1,9 +1,6 @@
 ---
-import Author from "../components/Author.astro";
 import Canvas from "../components/Canvas.astro";
 import Footer from "../components/Footer.astro";
-import MainNavigation from "../components/MainNavigation.astro";
-import Meta from "../components/Meta.astro";
 import Layout from "../layouts/Layout.astro";
 import TextureCredits from "../components/TextureCredits.astro";
 ---
@@ -15,18 +12,18 @@ import TextureCredits from "../components/TextureCredits.astro";
    import { loadTextures } from "../webgl/loaders/texture.loader";
    import { defaultUniforms } from "../webgl/settings/uniforms";
    import type { TextureData } from "../webgl/loaders/texture.types";
-   import { setupControls } from "../controls/setup";
+   //import { setupControls } from "../controls/setup";
    import { starsTexture } from "../webgl/textures/starsTexture";
 
    const textures: TextureData[] = [
-      { path: "2k_earth_color.jpeg" },
+      { path: "4k_earth_color.jpeg" },
       {
-         path: "2k_earth_night.jpeg",
-         options: { minFilter: "nearestMipmapLinear" },
+         path: "4k_earth_night.jpeg",
+         options: { minFilter: "linear" },
       },
-      { path: "2k_earth_clouds.jpeg" },
-      { path: "2k_earth_specular.jpeg" },
-      { path: "2k_earth_bump.jpg" },
+      { path: "4k_earth_clouds.jpeg" },
+      { path: "4k_earth_specular.jpeg" },
+      { path: "4k_earth_bump.jpg" },
       starsTexture,
    ];
 
@@ -56,22 +53,11 @@ import TextureCredits from "../components/TextureCredits.astro";
       },
    });
 
-   setupControls({ canvas, uniforms }, { planet: { clouds: true } });
+   //setupControls({ canvas, uniforms }, { planet: { clouds: true } });
 </script>
 
-<Layout title="Earth" description="An artistic view of the Earth from space.">
+<Layout title="" description="Login">
    <Canvas />
    <Footer>
-      <MainNavigation />
-      <Meta>
-         <Author />
-         <TextureCredits>
-            Textures from NASA <a
-               href="https://visibleearth.nasa.gov/collection/1484/blue-marble"
-            >
-               Visible Earth
-            </a>
-         </TextureCredits>
-      </Meta>
    </Footer>
 </Layout>

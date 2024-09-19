@@ -9,14 +9,14 @@ export const defaultUniforms = {
    uBumpStrength: 0.01,
    uNoiseStrength: 0.2,
    uTerrainScale: 0.8,
-   uCloudsDensity: 0.5,
+   uCloudsDensity: 0.75,
    uCloudsScale: 1,
    uCloudsSpeed: 1.5,
    uAtmosphereColor: [0.05, 0.3, 0.9],
-   uAtmosphereDensity: 0.3,
+   uAtmosphereDensity: 0.8,
    uAmbientLight: 0.01,
    uSunIntensity: 3,
-   sunDirectionXY: [1, 1],
+   sunDirectionXY: [-1, 0.25],
 };
 
 export type CustomUniforms = typeof defaultUniforms;
