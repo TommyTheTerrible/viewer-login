@@ -4,9 +4,6 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
    base: "/",
-   redirects: {
-      "/": "/earth",
-   },
    vite: {
       plugins: [glsl(), topLevelAwait()], // top-level await present in the "four" library
    },

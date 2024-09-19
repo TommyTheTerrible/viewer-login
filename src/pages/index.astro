@@ -1,0 +1,63 @@
+---
+import Canvas from "../components/Canvas.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import TextureCredits from "../components/TextureCredits.astro";
+---
+
+<script>
+   import { useGlslCanvas } from "../webgl/renderer";
+   import vertexShader from "../webgl/shaders/vertex.glsl";
+   import fragmentShader from "../webgl/shaders/earth.fragment.glsl";
+   import { loadTextures } from "../webgl/loaders/texture.loader";
+   import { defaultUniforms } from "../webgl/settings/uniforms";
+   import type { TextureData } from "../webgl/loaders/texture.types";
+   //import { setupControls } from "../controls/setup";
+   import { starsTexture } from "../webgl/textures/starsTexture";
+
+   const textures: TextureData[] = [
+      { path: "4k_earth_color.jpeg" },
+      {
+         path: "4k_earth_night.jpeg",
+         options: { minFilter: "linear" },
+      },
+      { path: "4k_earth_clouds.jpeg" },
+      { path: "4k_earth_specular.jpeg" },
+      { path: "4k_earth_bump.jpg" },
+      starsTexture,
+   ];
+
+   const [
+      uEarthColor,
+      uEarthNight,
+      uEarthClouds,
+      uEarthSpecular,
+      uEarthBump,
+      uStars,
+   ] = await loadTextures(textures);
+
+   const { canvas, uniforms } = useGlslCanvas({
+      vertex: vertexShader,
+      fragment: fragmentShader,
+      uniforms: {
+         ...defaultUniforms,
+         uCloudsScale: -1,
+         uCloudsSpeed: -1,
+         uAmbientLight: 0.002,
+         uEarthColor,
+         uEarthNight,
+         uEarthClouds,
+         uEarthSpecular,
+         uEarthBump,
+         uStars,
+      },
+   });
+
+   //setupControls({ canvas, uniforms }, { planet: { clouds: true } });
+</script>
+
+<Layout title="" description="Login">
+   <Canvas />
+   <Footer>
+   </Footer>
+</Layout>
